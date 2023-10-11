@@ -5,13 +5,13 @@ import {
   SortDirection,
   TableHeaderSortButton,
   TableHeaderSortIconStyle,
-} from "../DivTable/TableHeaderSortButton";
+} from "./TableHeaderSortButton";
 import { RadioButton } from "../Input/RadioButton";
 import { Checkbox } from "../Input/Checkbox";
 
 type SelectionType = "multiple" | "single" | "none";
 
-type HeaderItem<T> = {
+export type HeaderItem<T> = {
   name: string;
   prop: keyof T;
 };

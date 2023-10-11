@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { RadioButton } from "./components/Input/RadioButton";
 import { Table } from "./components/Table";
+import { HeaderItem } from "./components/Table/Table";
 import { theme } from "./styles/theme";
 
 type Data = {
@@ -12,9 +13,9 @@ type Data = {
 
 export default function App(): ReactElement {
   const [headers] = useState<HeaderItem<Data>[]>([
-    { displayName: "#", propertyName: "id" },
-    { displayName: "Name", propertyName: "name" },
-    { displayName: "3G Availability", propertyName: "threeG" },
+    { name: "#", prop: "id" },
+    { name: "Name", prop: "name" },
+    { name: "3G Availability", prop: "threeG" },
   ]);
   const [data] = useState([
     {
