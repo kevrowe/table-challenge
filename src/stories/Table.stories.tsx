@@ -2,9 +2,8 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Table } from "../components/Table";
 
 export default {
-  title: "Classic Table",
+  title: "Table",
   component: Table,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     selectionType: {
       description: "Changing this setting needs a page refresh",
@@ -33,8 +32,14 @@ export default {
         threeG: "Yes",
       },
     ],
-    sortable: false,
-    selectionType: "none",
+    headers: [
+      { name: "#", prop: "id" },
+      { name: "Operator", prop: "operator" },
+      { name: "Headset Display", prop: "headsetDisplay" },
+      { name: "3G Availability", prop: "threeG" },
+    ],
+    sortable: true,
+    selectionType: "single",
   },
 } as ComponentMeta<typeof Table>;
 

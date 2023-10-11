@@ -1,8 +1,7 @@
 import { ReactElement, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { RadioButton } from "./components/Input/RadioButton";
-import { Table } from "./components/DivTable";
-import { HeaderItem } from "./components/DivTable/Table";
+import { Table } from "./components/Table";
 import { theme } from "./styles/theme";
 
 type Data = {
@@ -40,11 +39,10 @@ export default function App(): ReactElement {
       <div className="App">
         <h1>Table</h1>
         <Table
-          cols={3}
-          style={{ width: 650, margin: "0 auto" }}
           headers={headers}
           data={data}
           selectionType={"single"}
+          sortable={true}
         />
       </div>
     </ThemeProvider>
