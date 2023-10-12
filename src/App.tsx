@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { Table } from "./components/Table";
 import { theme } from "./styles/theme";
 import { HeaderItem } from "./components/Table/types";
+import "./App.css";
 
 type Data = {
   id: number;
