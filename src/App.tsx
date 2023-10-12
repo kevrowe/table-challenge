@@ -60,7 +60,7 @@ export default function App(): ReactElement {
               >
                 {(() => {
                   if (prop === "selected") {
-                    return "" + selected;
+                    return selected ? "✅" : "☑️";
                   } else {
                     return data[prop];
                   }
