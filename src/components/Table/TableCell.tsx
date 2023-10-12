@@ -1,9 +1,9 @@
+import { PropsWithChildren } from "react";
 import styled from "styled-components";
 import { StyledProps } from "../../styles/theme";
-import { RadioButton } from "../Input/RadioButton";
 import { Checkbox } from "../Input/Checkbox";
+import { RadioButton } from "../Input/RadioButton";
 import { DataType, SelectionType } from "./types";
-import { PropsWithChildren } from "react";
 
 export const TableCellBaseStyle = styled.td`
   padding: ${({ theme }: StyledProps) => theme.padding} 0;

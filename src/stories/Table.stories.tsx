@@ -4,11 +4,7 @@ import { Table } from "../components/Table";
 export default {
   title: "Table",
   component: Table,
-  argTypes: {
-    selectionType: {
-      description: "Changing this setting needs a page refresh",
-    },
-  },
+  argTypes: {},
   args: {
     data: [
       {
@@ -33,7 +29,6 @@ export default {
       },
     ],
     headers: [
-      { name: "#", prop: "id" },
       { name: "Operator", prop: "operator" },
       { name: "Headset Display", prop: "headsetDisplay" },
       { name: "3G Availability", prop: "threeG" },
