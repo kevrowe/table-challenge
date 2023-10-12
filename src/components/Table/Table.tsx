@@ -9,21 +9,6 @@ import {
 } from "./TableHeaderSortButton";
 import { DataType, HeaderItem, SelectionType } from "./types";
 
-type Props<T> = {
-  data: T[];
-  sortable: boolean;
-  selectionType: SelectionType;
-  headers: HeaderItem<T>[];
-  cellRenderer?: (
-    data: DataType<T>,
-    prop: keyof T | "selected",
-    onSelect: (id: any) => void,
-    selected: boolean,
-    selectionType: SelectionType,
-    index?: number
-  ) => JSX.Element;
-};
-
 const THeadStyle = styled.thead<{ sortable: boolean }>`
   background-color: ${({ theme }: StyledProps) =>
     theme.palette.secondary.highlight};
@@ -84,13 +69,30 @@ const TableStyle = styled.table`
   }
 `;
 
-const defaultCellRenderer = <T,>(
-  data: DataType<T>,
-  prop: keyof T | "selected",
-  onSelect: (id: any) => void,
-  selected: boolean,
-  selectionType: SelectionType
-) => {
+type Props<T> = {
+  data: T[];
+  sortable: boolean;
+  selectionType: SelectionType;
+  headers: HeaderItem<T>[];
+  cellRenderer?: (props: CellRendererProps<T>) => JSX.Element;
+};
+
+export type CellRendererProps<T> = {
+  data: DataType<T>;
+  prop: keyof T | "selected";
+  onSelect: (id: any) => void;
+  selected: boolean;
+  selectionType: SelectionType;
+  index?: number;
+};
+
+const defaultCellRenderer = <T,>({
+  data,
+  onSelect,
+  selected,
+  prop,
+  selectionType,
+}: CellRendererProps<T>) => {
   return (
     <TableCell
       data={data}
@@ -201,14 +203,14 @@ export function Table<T extends object>({
             className={selected.includes(item.id) ? "active" : ""}
           >
             {headers.map((header, i) =>
-              cellRenderer(
-                item,
-                header.prop,
+              cellRenderer({
+                data: item,
+                prop: header.prop,
                 onSelect,
-                selected.includes(item.id),
+                selected: selected.includes(item.id),
                 selectionType,
-                i
-              )
+                index: i,
+              })
             )}
           </RowStyle>
         ))}

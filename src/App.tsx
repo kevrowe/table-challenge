@@ -52,7 +52,7 @@ export default function App(): ReactElement {
           data={data}
           selectionType={"multiple"}
           sortable={true}
-          cellRenderer={(data, prop, onSelect, selected, _2, i) => {
+          cellRenderer={({ data, prop, onSelect, selected }) => {
             return (
               <td
                 onClick={() => onSelect(data.id)}
